@@ -75,3 +75,10 @@ func TryNesting() {
 		log.Fatal(err)
 	}
 }
+
+func TryNesting2() {
+	err := tpl.ExecuteTemplate(os.Stdout, "index.gohtml", "o shid")
+	if err != nil {
+		log.Fatal(err)
+	}
+}
