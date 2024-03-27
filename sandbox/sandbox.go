@@ -10,8 +10,9 @@ import (
 var tpl *template.Template
 
 var fm = template.FuncMap{
-	"lower": strings.ToLower,
-	"flip":  Flip,
+	"lower":   strings.ToLower,
+	"flip":    Flip,
+	"capital": Capitalize,
 }
 
 func Flip(s string) string {
@@ -20,6 +21,10 @@ func Flip(s string) string {
 		runes[i], runes[j] = runes[j], runes[i]
 	}
 	return string(runes)
+}
+
+func Capitalize(s string) string {
+	return strings.ToUpper(s[:1]) + s[1:]
 }
 
 type person struct {
@@ -31,8 +36,14 @@ func init() {
 	tpl = template.Must(template.New("").Funcs(fm).ParseGlob("templates/*.gohtml"))
 }
 
-func TryStructRange() {
+func TryPiping() {
+	err := tpl.ExecuteTemplate(os.Stdout, "template-piping.gohtml", "PEEPEEPOOPOO")
+	if err != nil {
+		log.Fatal(err)
+	}
+}
 
+func TryStructRange() {
 	dudes := []person{
 		{Name: "Apu", Height: 456},
 		{Name: "Apustaja", Height: 6546},
