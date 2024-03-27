@@ -68,3 +68,10 @@ func TryRangeMapFuncs() {
 		log.Fatal(err)
 	}
 }
+
+func TryNesting() {
+	err := tpl.ExecuteTemplate(os.Stdout, "template-to-be-nested-into.gohtml", "lelelelel")
+	if err != nil {
+		log.Fatal(err)
+	}
+}

@@ -6,10 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    Raw: {{.}}
-    Lower Case: {{. | lower}}
-    Flipped Lower Case: {{. | lower | flip}}
-    Capitalized Flipped Lower Case: {{. | lower | flip | capital}}
-    Nonepipelined {{capital flip lower .}}
+    {{template "bunchadivs" .}}
 </body>
 </html>
